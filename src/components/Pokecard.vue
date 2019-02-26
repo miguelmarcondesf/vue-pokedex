@@ -1,53 +1,80 @@
 <template>
   <v-card>
-      <v-container
-        fluid
-        grid-list-lg
-      >
-        <v-layout row wrap>
-          <v-flex xl>
-            <v-card color="purple" class="white--text">
-              <v-layout row>
-                <v-flex xs7>
-                  <v-card-title primary-title>
+    <v-container fluid grid-list-md>
+      <v-layout row wrap>
+        <v-flex>
+          <v-card color="grey" class="white--text">
+            <v-layout row>
+              <v-flex aling-self-end>
+                <v-card-title primary-title>
+                  <div>
+                    <h1 class="mr-4"># {{ pokeId }}</h1>
+                  </div>
+                  <div>
+                    <div class="headline text-capitalize">{{ pokeName }}</div>
                     <div>
-                      <div class="headline">Halycon Days</div>
-                      <div>Ellie Goulding</div>
-                      <div>(2013)</div>
+                      <v-chip
+                        v-for="(type, index) in pokeTypes"
+                        :key="index"
+                        color="primary"
+                        text-color="white"
+                      >{{type.type.name}}</v-chip>
                     </div>
-                  </v-card-title>
-                </v-flex>
-                <v-flex xs5>
-                  <v-img
-                    src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
-                    height="125px"
-                    contain
-                  ></v-img>
-                </v-flex>
-              </v-layout>
-              <v-divider light></v-divider>
-              <v-card-actions class="pa-3">
-                Rate this album
-                <v-spacer></v-spacer>
-                <v-icon>star_border</v-icon>
-                <v-icon>star_border</v-icon>
-                <v-icon>star_border</v-icon>
-                <v-icon>star_border</v-icon>
-                <v-icon>star_border</v-icon>
-              </v-card-actions>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
+                  </div>
+                </v-card-title>
+              </v-flex>
+              <v-flex xs5>
+                <v-img :src="pokeImage" height="125px" contain></v-img>
+              </v-flex>
+            </v-layout>
+            <v-divider light></v-divider>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
 </template>
 
 <script>
-export default {
+import { mapGetters } from "vuex";
 
-}
+export default {
+  props: {
+    id: 0,
+    name: "",
+    types: [],
+    image: ""
+  },
+  
+  data () {
+    return {
+      pokeId: 0,
+      pokeName: "",
+      pokeTypes: [],
+      pokeImage: ""
+    }
+  },
+
+  methods: {
+    getInfo() {
+      this.$http.get(`pokemon/${this.name}`).then(res => {
+        const data = res.data;
+        this.pokeTypes = data.types;
+        this.pokeImage = data.sprites.front_default;
+        this.pokeId = data.id;
+        this.pokeName = data.name
+      });
+    }
+  },
+
+  mounted() {
+    this.$nextTick(() => {
+      this.getInfo()
+    })
+  }
+
+};
 </script>
 
 <style>
-
 </style>

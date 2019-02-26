@@ -1,13 +1,28 @@
 <template>
-  <HelloWorld />
+  <div>
+    <PokeList :pokeList="pokeList" />
+  </div>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+import PokeList from '@/components/PokeList'
+import { mapGetters } from 'vuex'
 
   export default {
     components: {
-      HelloWorld
+      PokeList
+    },
+
+    computed: {
+        ...mapGetters({
+            pokeList: 'pokeList'
+        })
+    },
+
+    mounted() {
+      this.$nextTick(() => {
+        this.$store.dispatch('loadPokeList')
+      })
     }
   }
 </script>

@@ -4,7 +4,7 @@
 
     <v-content>
       <v-container>
-        <Pokecard />
+        <Home />
       </v-container>
     </v-content>
   </v-app>
@@ -12,13 +12,13 @@
 
 <script>
 import Header from '@/components/Header'
-import Pokecard from '@/components/Pokecard'
+import Home from '@/views/Home'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Pokecard
+    Home
   },
   data () {
     return {
