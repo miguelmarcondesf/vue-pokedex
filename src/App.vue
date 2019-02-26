@@ -3,22 +3,24 @@
     <Header />
 
     <v-content>
-      <v-container>
-        <Home />
-      </v-container>
+      <router-view/>
     </v-content>
+
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import Header from '@/components/Header'
 import Home from '@/views/Home'
+import Footer from '@/components/Footer'
 
 export default {
   name: 'App',
   components: {
     Header,
-    Home
+    Home,
+    Footer
   },
   data () {
     return {

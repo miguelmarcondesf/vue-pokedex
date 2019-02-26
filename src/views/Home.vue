@@ -1,27 +1,46 @@
 <template>
-  <div>
+  <div class="home">
     <PokeList :pokeList="pokeList" />
+
+    <div class="text-xs-center">
+      <Paginate :count="count" />
+    </div>
+
   </div>
 </template>
 
 <script>
 import PokeList from '@/components/PokeList'
+import Paginate from '@/components/Paginate'
 import { mapGetters } from 'vuex'
 
   export default {
+
     components: {
-      PokeList
+      PokeList,
+      Paginate
     },
 
     computed: {
-        ...mapGetters({
-            pokeList: 'pokeList'
-        })
+      ...mapGetters({
+          pokeList: 'pokeList'
+      }),
+
+      count: function () {
+        return this.$store.state.count
+      },
+      currentPage: function () {
+        return this.$store.state.currentPage
+      }
     },
 
     mounted() {
       this.$nextTick(() => {
-        this.$store.dispatch('loadPokeList')
+        if (this.$route.query.page) {
+          this.$store.dispatch('loadPage', this.$route.query.page)
+        } else {
+          this.$store.dispatch('loadPage', 1)
+        }
       })
     }
   }

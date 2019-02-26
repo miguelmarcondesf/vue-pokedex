@@ -6,6 +6,7 @@
           v-for="(pokemon, index) in pokeList"
           :key="index"
           xs12
+          sm6
           md4
         >
           <v-item>
@@ -37,5 +38,7 @@ export default {
 </script>
 
 <style>
-
+  v-card {
+    margin: 8px;
+  }
 </style>

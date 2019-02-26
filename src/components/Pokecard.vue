@@ -1,37 +1,27 @@
 <template>
-  <v-card>
-    <v-container fluid grid-list-md>
-      <v-layout row wrap>
-        <v-flex>
-          <v-card color="grey" class="white--text">
-            <v-layout row>
-              <v-flex aling-self-end>
-                <v-card-title primary-title>
-                  <div>
-                    <h1 class="mr-4"># {{ pokeId }}</h1>
-                  </div>
-                  <div>
-                    <div class="headline text-capitalize">{{ pokeName }}</div>
-                    <div>
-                      <v-chip
-                        v-for="(type, index) in pokeTypes"
-                        :key="index"
-                        color="primary"
-                        text-color="white"
-                      >{{type.type.name}}</v-chip>
-                    </div>
-                  </div>
-                </v-card-title>
-              </v-flex>
-              <v-flex xs5>
-                <v-img :src="pokeImage" height="125px" contain></v-img>
-              </v-flex>
-            </v-layout>
-            <v-divider light></v-divider>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+  <v-card color="white" class="black--text mt-2" max-height="165px">
+    <v-layout row>
+      <v-flex aling-self-end>
+        <h4 class="ml-2"># {{ pokeId }}</h4>
+        <v-card-title>
+          <div>
+            <div class="headline text-capitalize">{{ pokeName }}</div>
+            <v-flex>
+              <span
+                v-for="(type, index) in pokeTypes"
+                :key="index"
+                text-color="white"
+                color="none"
+                :class="`badge badge-${type.type.name}`"
+              >{{type.type.name}}</span>
+            </v-flex>
+          </div>
+        </v-card-title>
+      </v-flex>
+      <v-flex sm4 align-self-start>
+        <v-img :src="pokeImage ? pokeImage : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" contain></v-img>
+      </v-flex>
+    </v-layout>
   </v-card>
 </template>
 
@@ -45,36 +35,81 @@ export default {
     types: [],
     image: ""
   },
-  
-  data () {
+
+  data() {
     return {
       pokeId: 0,
       pokeName: "",
       pokeTypes: [],
       pokeImage: ""
-    }
+    };
   },
 
   methods: {
     getInfo() {
+      const self = this
       this.$http.get(`pokemon/${this.name}`).then(res => {
         const data = res.data;
-        this.pokeTypes = data.types;
-        this.pokeImage = data.sprites.front_default;
-        this.pokeId = data.id;
-        this.pokeName = data.name
+        self.pokeTypes = data.types;
+        self.pokeImage = data.sprites.front_default;
+        self.pokeId = data.id;
+        self.pokeName = data.name;
       });
+    }
+  },
+
+  watch: {
+    name: function (val, oldVal) {
+      const self = this
+      if (val !== oldVal) {
+        self.name = val
+        self.getInfo()
+      }
     }
   },
 
   mounted() {
     this.$nextTick(() => {
-      this.getInfo()
-    })
+      this.getInfo();
+    });
   }
-
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+  .badge {
+    font-size: 10px;
+    margin-top: 4px;
+    margin-right: 8px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    font-weight: 800;
+
+    &.badge- {
+
+      &fire {
+        background-color: orange;
+      }
+
+      &poison {
+        background-color: purple;
+        color: white;
+      }
+
+      &water {
+        background-color: blue;
+        color: white;
+      }
+
+      &grass {
+        background-color: green;
+        color: white;
+      }
+    }
+  }
+  
+
+
 </style>

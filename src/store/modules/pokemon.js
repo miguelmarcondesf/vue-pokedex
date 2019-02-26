@@ -12,18 +12,8 @@ export default {
     }
   },
 
-  actions: {
-    loadPokeList (context) {
-      Vue.prototype.$http('pokemon').then(resp => {
-        const data = resp.data
-        context.commit('writePokeList', data.results)
-      })
-    }
-  },
-
   getters: {
     pokeList (state) {
-      console.log(state.pokeList)
       return state.pokeList
     }
   }
