@@ -18,7 +18,7 @@ export default {
   computed: {
 
     pages() {
-      return Math.ceil(this.count / 20)
+      return Math.ceil(this.count / 40)
     },
 
     currentPage: {

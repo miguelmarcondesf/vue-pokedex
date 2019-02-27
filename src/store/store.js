@@ -23,11 +23,10 @@ export default new Vuex.Store({
   },
   actions: {
     loadPage (context, page) {
-      const offset = (page - 1) * 20
+      const offset = (page - 1) * 40
       context.commit('writeCurrentPage', page)
       console.log(this.currentPage)
-      Vue.prototype.$http.get(`pokemon?offset=${offset}&limit=20`).then(function (res) {
-        console.log(res)
+      Vue.prototype.$http.get(`pokemon?offset=${offset}&limit=40`).then(function (res) {
         context.commit('writePokeList', res.data.results)
         context.commit('updateCount', res.data.count)
       })
