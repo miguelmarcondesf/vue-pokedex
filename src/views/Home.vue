@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="text-xs-center">
+
       <RegionFilter />
     </div>
 

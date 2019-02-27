@@ -8,9 +8,11 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn icon>
-      <v-icon>search</v-icon>
-    </v-btn>
+      <!-- <v-text-field
+        class="search-input"
+        label="Search"
+        prepend-inner-icon="search"
+      ></v-text-field> -->
 
   </v-toolbar>
 </template>
@@ -27,5 +29,8 @@ export default {
       color: white;
       text-decoration: none;
     }
+  }
+  
+  .search-input {
   }
 </style>

@@ -1,9 +1,11 @@
 <template>
   <v-item-group>
+    <input type="text" placeholder="search" v-model="search">
+
     <v-container grid-list-md>
       <v-layout wrap>
         <v-flex
-          v-for="(pokemon, index) in pokeList"
+          v-for="(pokemon, index) in filteredPokemon"
           :key="index"
           xs12
           sm6
@@ -22,6 +24,12 @@
 import Pokecard from './Pokecard'
 
 export default {
+  data() {
+    return {
+      search: ''
+    }
+  },
+
   components: {
     Pokecard
   },
@@ -32,6 +40,17 @@ export default {
       default () {
         return []
       }
+    }
+  },
+  
+  computed: {
+    filteredPokemon() {
+      console.log(this.search)
+
+      return this.pokeList.filter((pokemon) => {
+
+        return pokemon.name.match(this.search)
+      })
     }
   }
 }
