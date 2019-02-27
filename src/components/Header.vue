@@ -2,7 +2,9 @@
   <v-toolbar dark color="red">
     <v-toolbar-side-icon></v-toolbar-side-icon>
 
-    <v-toolbar-title class="white--text">Vue Pokédex</v-toolbar-title>
+    <v-toolbar-title class="toolbal-logo">
+      <router-link to="/">PokéDex Vue</router-link>
+    </v-toolbar-title>
 
     <v-spacer></v-spacer>
 
@@ -19,6 +21,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .toolbal-logo {
+    a  {
+      color: white;
+      text-decoration: none;
+    }
+  }
 </style>
