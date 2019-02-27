@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <div class="text-xs-center">
+      <RegionFilter />
+    </div>
+
     <PokeList :pokeList="pokeList" />
 
     <div class="text-xs-center">
@@ -12,13 +16,15 @@
 <script>
 import PokeList from '@/components/PokeList'
 import Paginate from '@/components/Paginate'
+import RegionFilter from '@/components/RegionFilter'
 import { mapGetters } from 'vuex'
 
   export default {
 
     components: {
       PokeList,
-      Paginate
+      Paginate,
+      RegionFilter
     },
 
     computed: {

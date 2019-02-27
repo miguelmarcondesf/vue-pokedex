@@ -33,7 +33,7 @@ export default {
 
   methods: {
     nextPage() {
-      this.$store.dispatch('loadPage', this.currentPage + 1)
+      this.$store.dispatch('loadPage', this.currentPage)
     },
 
     previousPage() {
