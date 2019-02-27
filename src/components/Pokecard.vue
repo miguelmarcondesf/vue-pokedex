@@ -5,7 +5,17 @@
         <h4 class="ml-2"># {{ pokeId }}</h4>
         <v-card-title>
           <div>
-            <div class="headline text-capitalize">{{ pokeName }}</div>
+
+          <v-tooltip top>
+            <template #activator="data">
+              <div class="headline text-capitalize pokemon-name" v-on="data.on">{{ pokeName }}</div>
+            </template>
+            <span class="text-capitalize">{{ pokeName }}</span>
+          </v-tooltip>
+
+
+
+
             <v-flex>
               <span
                 v-for="(type, index) in pokeTypes"
@@ -77,6 +87,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  .pokemon-name {
+    max-width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
   .badge {
     font-size: 10px;
