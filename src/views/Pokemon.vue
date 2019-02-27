@@ -12,12 +12,19 @@
     </v-flex>
 
     <v-flex align-self-center>
-      <v-img height="150px" width="250px" :src="pokeImage ? pokeImage : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" ></v-img>
+      <v-img height="150px" width="250px" contain :src="pokeImage ? pokeImage : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" ></v-img>
     </v-flex>
 
-    <v-flex align-self-center class="mt-2">
-      <h2>Stats</h2>
+    <v-flex class="flex-wrapper mt-2">
+      <div>
+        <Stats :pokeStats="pokeStats" />
+      </div>
+
+      <div> 
+        <Stats />
+      </div>
     </v-flex>
+
 
     <EvolutionTimeline />
   </v-layout>
@@ -26,6 +33,7 @@
 
 <script>
 import EvolutionTimeline from '@/components/Pokemon/EvolutionTimeline'
+import Stats from '@/components/Pokemon/Stats'
 
 export default {
   data() {
@@ -33,12 +41,14 @@ export default {
       pokeId: 0,
       pokeName: "",
       pokeTypes: [],
-      pokeImage: ""
+      pokeImage: "",
+      pokeStats: []
     }
   },
 
   components: {
-    EvolutionTimeline
+    EvolutionTimeline,
+    Stats
   },
 
   methods: {
@@ -51,6 +61,7 @@ export default {
         self.pokeImage = data.sprites.front_default;
         self.pokeId = data.id;
         self.pokeName = name
+        self.pokeStats = data.stats
       });
     }
   },
@@ -83,5 +94,11 @@ export default {
       font-size: 26px;
       color: #616161;
     }
+  }
+
+  .flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 </style>
