@@ -1,5 +1,5 @@
 <template>
-  <v-card color="white" class="black--text mt-2" max-height="165px">
+  <v-card @click="goToPokemon(name)" color="white" class="black--text mt-2" max-height="165px">
     <v-layout row>
       <v-flex aling-self-end>
         <h4 class="ml-2"># {{ pokeId }}</h4>
@@ -60,6 +60,15 @@ export default {
         self.pokeId = data.id;
         self.pokeName = data.name;
       });
+    },
+
+    goToPokemon(pokemonName) {
+      this.$router.push({
+        name: 'pokemon',
+        params: {
+          name: pokemonName
+        }
+      })
     }
   },
 

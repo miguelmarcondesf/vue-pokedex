@@ -9,7 +9,7 @@
           sm6
           md4
         >
-          <v-item>
+          <v-item @click="goToPokemon(pokemon.name)">
             <Pokecard :name="pokemon.name" />
           </v-item>
         </v-flex>
