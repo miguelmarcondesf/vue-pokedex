@@ -7,7 +7,7 @@
     class="mx-2 mt-4 poke-stats"
   >
     <v-card-title>
-      <span class="title font-weight-light mx-auto">Stats</span>
+      <span class="title font-weight-bold mx-auto">Stats</span>
     </v-card-title>
 
     <v-card-text v-for="(stats, index) in pokeStats" :key="index" class="headline font-weight-bold">
@@ -89,9 +89,5 @@ export default {
   .flex-wrapper {
     display: flex;
   justify-content: space-between;
-  }
-
-  .speed {
-    color: red;
   }
 </style>

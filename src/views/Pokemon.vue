@@ -21,7 +21,7 @@
       </div>
 
       <div> 
-        <Stats />
+        <Infos :pokeTypes="pokeTypes" />
       </div>
     </v-flex>
 
@@ -34,6 +34,7 @@
 <script>
 import EvolutionTimeline from '@/components/Pokemon/EvolutionTimeline'
 import Stats from '@/components/Pokemon/Stats'
+import Infos from '@/components/Pokemon/Infos'
 
 export default {
   data() {
@@ -48,7 +49,8 @@ export default {
 
   components: {
     EvolutionTimeline,
-    Stats
+    Stats,
+    Infos
   },
 
   methods: {
