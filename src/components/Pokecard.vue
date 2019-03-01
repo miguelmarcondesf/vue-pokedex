@@ -24,7 +24,7 @@
         </v-card-title>
       </v-flex>
       <v-flex sm4 align-self-start>
-        <v-img :src="pokeImage ? pokeImage : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" contain></v-img>
+        <v-img :src="pokeImage" alt="Pokemon" contain></v-img>
       </v-flex>
     </v-layout>
   </v-card>
@@ -33,30 +33,22 @@
 <script>
 export default {
   props: {
-    id: {
-      type: Number,
-      default: 0
-    },
     name: {
       type: String,
-      default: ''
-    },
-    types: {
-      type: String,
-      default: ''
-    },
-    image: {
-      type: String,
-      default: ''
+      default: 'Ditto'
     }
   },
 
   data () {
     return {
-      pokeId: 0,
-      pokeName: '',
-      pokeTypes: [],
-      pokeImage: ''
+      pokeId: 132,
+      pokeName: 'Ditto',
+      pokeTypes: [
+        {
+          type: 'normal'
+        }
+      ],
+      pokeImage: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
     }
   },
 
@@ -79,16 +71,6 @@ export default {
           name: pokemonName
         }
       })
-    }
-  },
-
-  watch: {
-    name: function (val, oldVal) {
-      const self = this
-      if (val !== oldVal) {
-        self.name = val
-        self.getInfo()
-      }
     }
   },
 
