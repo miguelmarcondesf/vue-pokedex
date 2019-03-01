@@ -35,10 +35,22 @@ import { mapGetters } from "vuex";
 
 export default {
   props: {
-    id: 0,
-    name: "",
-    types: [],
-    image: ""
+    id: {
+      type: Number,
+      default: 0
+  },
+    name: {
+      type: String,
+      default: ''
+    },
+    types: {
+      type: String,
+      default: ''
+    },
+    image: {
+      type: String,
+      default: ''
+    }
   },
 
   data() {
