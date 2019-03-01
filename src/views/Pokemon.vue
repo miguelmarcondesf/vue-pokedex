@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-flex>
-      <h1>< Anterior > Próximo</h1>
+      <h1>&lt;  Anterior &gt; Próximo</h1>
     </v-flex>
 
     <v-divider />
