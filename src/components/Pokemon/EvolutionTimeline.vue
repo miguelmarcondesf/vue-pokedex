@@ -23,9 +23,9 @@
 
 <script>
 import Vue from 'vue'
-import axios from 'axios'
 
 export default {
+  name: 'EvolutionTimeline',
   data: () => ({
     years: [
       {
@@ -52,18 +52,17 @@ export default {
   }),
 
   props: {
-    pokeName: String,
-    default: 'Ditto'
+    pokeName: {
+      type: String,
+      default: 'Ditto'
+    }
   },
 
   methods: {
     async searchEvolutionChain () {
-      let evolution_chain = await Vue.prototype.$http.get(`pokemon-species/${this.pokeName}`).then(function (res) {
-        console.log(res.data.evolution_chain.url)
-        return res
-      })
+      const evolutionChain = await Vue.prototype.$http.get(`pokemon-species/${this.pokeName}`)
 
-      console.log(evolution_chain)
+      console.log(evolutionChain.data)
     }
   },
 
