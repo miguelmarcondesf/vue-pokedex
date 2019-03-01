@@ -6,7 +6,13 @@ export default {
 
   mutations: {
     writePokeList (state, value) {
-      state.pokeList = value
+      const oldPokeState =  state.pokeList
+
+      var test = value.map((data) => {
+        oldPokeState.push(data)
+      })
+
+      state.pokeList = oldPokeState      
     }
   },
 
