@@ -58,7 +58,7 @@
 
     methods: {
       async searchEvolutionChain() {
-        let evolution_chain = Vue.prototype.$http.get(`pokemon-species/${this.pokeName}`).then(function (res) {
+        let evolution_chain = await Vue.prototype.$http.get(`pokemon-species/${this.pokeName}`).then(function (res) {
           console.log(res.data.evolution_chain.url)
           return res
         })
