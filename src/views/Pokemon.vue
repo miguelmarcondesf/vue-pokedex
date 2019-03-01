@@ -11,8 +11,11 @@
       <span>  nº {{ pokeId }}</span>
     </v-flex>
 
-    <v-flex align-self-center>
-      <v-img height="150px" width="250px" contain :src="pokeImage ? pokeImage : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" ></v-img>
+    <v-flex class="images-wrapper" align-self-center>
+      <v-img height="150px" width="250px" contain :src="pokeImage.front_default ? pokeImage.front_default : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" ></v-img>
+      <v-img height="150px" width="250px" contain :src="pokeImage.back_default ? pokeImage.back_default : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" ></v-img>
+      <v-img height="150px" width="250px" contain :src="pokeImage.front_shiny ? pokeImage.front_shiny : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" ></v-img>
+      <v-img height="150px" width="250px" contain :src="pokeImage.back_shiny ? pokeImage.back_shiny : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" ></v-img>
     </v-flex>
 
     <v-flex class="flex-wrapper mt-2">
@@ -42,7 +45,7 @@ export default {
       pokeId: 0,
       pokeName: "",
       pokeTypes: [],
-      pokeImage: "",
+      pokeImage: [],
       pokeStats: []
     }
   },
@@ -60,7 +63,7 @@ export default {
       this.$http.get(`pokemon/${name}`).then(res => {
         const data = res.data;
         self.pokeTypes = data.types;
-        self.pokeImage = data.sprites.front_default;
+        self.pokeImage = data.sprites;
         self.pokeId = data.id;
         self.pokeName = name
         self.pokeStats = data.stats
@@ -99,6 +102,12 @@ export default {
   }
 
   .flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .images-wrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

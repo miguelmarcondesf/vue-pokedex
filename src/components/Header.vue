@@ -3,7 +3,7 @@
     <v-toolbar-side-icon></v-toolbar-side-icon>
 
     <v-toolbar-title class="toolbal-logo">
-      <router-link to="/">PokéDex Vue</router-link>
+      <router-link to="/">Pokédex Vue</router-link>
     </v-toolbar-title>
 
     <v-spacer></v-spacer>

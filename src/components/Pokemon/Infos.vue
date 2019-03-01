@@ -24,6 +24,16 @@
 
     <hr>
 
+    <div class="flex-wrapper">
+      <v-card-title>
+        <span class="title font-weight-bold mx-auto black--text">Width:</span>
+      </v-card-title>
+
+      <v-card-title>
+        <span class="title font-weight-bold mx-auto black--text">Height:</span>
+      </v-card-title>
+    </div>
+
   </v-card>
 </template>
 
@@ -66,7 +76,7 @@ export default {
   }
 
   .badge {
-    font-size: 24px;
+    font-size: 16px;
     margin-top: 4px;
     margin-right: 8px;
     font-family: sans-serif;
