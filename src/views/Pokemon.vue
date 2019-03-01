@@ -29,7 +29,7 @@
     </v-flex>
 
 
-    <EvolutionTimeline />
+    <EvolutionTimeline :pokeName="pokeName" />
   </v-layout>
 
 </template>

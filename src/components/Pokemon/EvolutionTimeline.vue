@@ -22,6 +22,9 @@
 </template>
 
 <script>
+  import Vue from 'vue'
+  import axios from 'axios'
+
   export default {
     data: () => ({
       years: [
@@ -46,7 +49,27 @@
           year: '2000'
         }
       ]
-    })
+    }),
+
+    props: {
+      pokeName: String,
+      default: 'Ditto'
+    },
+
+    methods: {
+      async searchEvolutionChain() {
+        let evolution_chain = Vue.prototype.$http.get(`pokemon-species/${this.pokeName}`).then(function (res) {
+          console.log(res.data.evolution_chain.url)
+          return res
+        })
+
+        console.log(evolution_chain)
+      }
+    },
+
+    mounted() {
+      this.searchEvolutionChain()
+    }
   }
 </script>
 
