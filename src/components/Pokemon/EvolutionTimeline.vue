@@ -53,7 +53,7 @@ export default {
 
   props: {
     pokeName: String,
-    default: Ditto
+    default: 'Ditto'
   },
 
   methods: {
