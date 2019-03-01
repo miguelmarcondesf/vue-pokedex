@@ -22,55 +22,55 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import axios from 'axios'
+import Vue from 'vue'
+import axios from 'axios'
 
-  export default {
-    data: () => ({
-      years: [
-        {
-          color: 'cyan',
-          year: '1960'
-        },
-        {
-          color: 'green',
-          year: '1970'
-        },
-        {
-          color: 'pink',
-          year: '1980'
-        },
-        {
-          color: 'amber',
-          year: '1990'
-        },
-        {
-          color: 'orange',
-          year: '2000'
-        }
-      ]
-    }),
-
-    props: {
-      pokeName: String,
-      default: 'Ditto'
-    },
-
-    methods: {
-      async searchEvolutionChain() {
-        let evolution_chain = await Vue.prototype.$http.get(`pokemon-species/${this.pokeName}`).then(function (res) {
-          console.log(res.data.evolution_chain.url)
-          return res
-        })
-
-        console.log(evolution_chain)
+export default {
+  data: () => ({
+    years: [
+      {
+        color: 'cyan',
+        year: '1960'
+      },
+      {
+        color: 'green',
+        year: '1970'
+      },
+      {
+        color: 'pink',
+        year: '1980'
+      },
+      {
+        color: 'amber',
+        year: '1990'
+      },
+      {
+        color: 'orange',
+        year: '2000'
       }
-    },
+    ]
+  }),
 
-    mounted() {
-      this.searchEvolutionChain()
+  props: {
+    pokeName: String,
+    default: Ditto
+  },
+
+  methods: {
+    async searchEvolutionChain () {
+      let evolution_chain = await Vue.prototype.$http.get(`pokemon-species/${this.pokeName}`).then(function (res) {
+        console.log(res.data.evolution_chain.url)
+        return res
+      })
+
+      console.log(evolution_chain)
     }
+  },
+
+  mounted () {
+    this.searchEvolutionChain()
   }
+}
 </script>
 
 <style>

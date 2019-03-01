@@ -11,13 +11,13 @@
 
 <script>
 export default {
-    props: {
+  props: {
     count: Number
   },
 
   computed: {
 
-    pages() {
+    pages () {
       return Math.ceil(this.count / 40)
     },
 
@@ -32,15 +32,15 @@ export default {
   },
 
   methods: {
-    nextPage() {
+    nextPage () {
       this.$store.dispatch('loadPage', this.currentPage)
     },
 
-    previousPage() {
+    previousPage () {
       this.$store.dispatch('loadPage', this.currentPage - 1)
     },
 
-    goToPage(pageNumber) {
+    goToPage (pageNumber) {
       this.$store.dispatch('loadPage', pageNumber)
     }
   }

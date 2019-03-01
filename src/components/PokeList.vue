@@ -24,7 +24,7 @@
 import Pokecard from './Pokecard'
 
 export default {
-  data() {
+  data () {
     return {
       search: ''
     }
@@ -42,13 +42,12 @@ export default {
       }
     }
   },
-  
+
   computed: {
-    filteredPokemon() {
+    filteredPokemon () {
       console.log(this.search)
 
       return this.pokeList.filter((pokemon) => {
-
         return pokemon.name.match(this.search)
       })
     }

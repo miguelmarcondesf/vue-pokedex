@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
     id: {
       type: Number,
       default: 0
-  },
+    },
     name: {
       type: String,
       default: ''
@@ -53,28 +53,28 @@ export default {
     }
   },
 
-  data() {
+  data () {
     return {
       pokeId: 0,
-      pokeName: "",
+      pokeName: '',
       pokeTypes: [],
-      pokeImage: ""
-    };
+      pokeImage: ''
+    }
   },
 
   methods: {
-    getInfo() {
+    getInfo () {
       const self = this
       this.$http.get(`pokemon/${this.name}`).then(res => {
-        const data = res.data;
-        self.pokeTypes = data.types;
-        self.pokeImage = data.sprites.front_default;
-        self.pokeId = data.id;
-        self.pokeName = data.name;
-      });
+        const data = res.data
+        self.pokeTypes = data.types
+        self.pokeImage = data.sprites.front_default
+        self.pokeId = data.id
+        self.pokeName = data.name
+      })
     },
 
-    goToPokemon(pokemonName) {
+    goToPokemon (pokemonName) {
       this.$router.push({
         name: 'pokemon',
         params: {
@@ -94,12 +94,12 @@ export default {
     }
   },
 
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
-      this.getInfo();
-    });
+      this.getInfo()
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -215,7 +215,5 @@ export default {
       }
     }
   }
-  
-
 
 </style>
