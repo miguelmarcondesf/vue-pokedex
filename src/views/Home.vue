@@ -7,16 +7,11 @@
 
     <PokeList :pokeList="pokeList" />
 
-    <div class="text-xs-center">
-      <Paginate :count="count" />
-    </div>
-
   </div>
 </template>
 
 <script>
 import PokeList from '@/components/PokeList'
-import Paginate from '@/components/Paginate'
 import RegionFilter from '@/components/RegionFilter'
 import { mapGetters } from 'vuex'
 
@@ -24,7 +19,6 @@ import { mapGetters } from 'vuex'
 
     components: {
       PokeList,
-      Paginate,
       RegionFilter
     },
 
