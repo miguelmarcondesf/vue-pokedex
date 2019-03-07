@@ -30,7 +30,7 @@ export default {
       text-decoration: none;
     }
   }
-  
+
   .search-input {
   }
 </style>

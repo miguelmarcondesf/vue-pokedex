@@ -25,20 +25,20 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       currentYear: 2018
     }
   },
 
   methods: {
-    updateFooterDate() {
+    updateFooterDate () {
       const updateYear = new Date().getFullYear()
       this.currentYear = updateYear
     }
   },
 
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.updateFooterDate()
     })

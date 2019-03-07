@@ -1,7 +1,7 @@
 <template>
   <v-layout column>
     <v-flex>
-      <h1>< Anterior > Próximo</h1>
+      <h1>&lt;  Anterior &gt; Próximo</h1>
     </v-flex>
 
     <v-divider />
@@ -23,11 +23,10 @@
         <Stats :pokeStats="pokeStats" />
       </div>
 
-      <div> 
+      <div>
         <Infos :pokeTypes="pokeTypes" />
       </div>
     </v-flex>
-
 
     <EvolutionTimeline :pokeName="pokeName" />
   </v-layout>
@@ -40,10 +39,10 @@ import Stats from '@/components/Pokemon/Stats'
 import Infos from '@/components/Pokemon/Infos'
 
 export default {
-  data() {
+  data () {
     return {
       pokeId: 0,
-      pokeName: "",
+      pokeName: '',
       pokeTypes: [],
       pokeImage: [],
       pokeStats: []
@@ -57,24 +56,24 @@ export default {
   },
 
   methods: {
-    getInfo() {
+    getInfo () {
       const name = this.$route.params.name
       const self = this
       this.$http.get(`pokemon/${name}`).then(res => {
-        const data = res.data;
-        self.pokeTypes = data.types;
-        self.pokeImage = data.sprites;
-        self.pokeId = data.id;
+        const data = res.data
+        self.pokeTypes = data.types
+        self.pokeImage = data.sprites
+        self.pokeId = data.id
         self.pokeName = name
         self.pokeStats = data.stats
-      });
+      })
     }
   },
 
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
-      this.getInfo();
-    });
+      this.getInfo()
+    })
   }
 }
 </script>

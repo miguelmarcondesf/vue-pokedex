@@ -24,45 +24,47 @@
         </v-card-title>
       </v-flex>
       <v-flex sm4 align-self-start>
-        <v-img :src="pokeImage ? pokeImage : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' " alt="Pokemon" contain></v-img>
+        <v-img :src="pokeImage" alt="Pokemon" contain></v-img>
       </v-flex>
     </v-layout>
   </v-card>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   props: {
-    id: 0,
-    name: "",
-    types: [],
-    image: ""
+    name: {
+      type: String,
+      default: 'Ditto'
+    }
   },
 
-  data() {
+  data () {
     return {
-      pokeId: 0,
-      pokeName: "",
-      pokeTypes: [],
-      pokeImage: ""
-    };
+      pokeId: 132,
+      pokeName: 'Ditto',
+      pokeTypes: [
+        {
+          type: 'normal'
+        }
+      ],
+      pokeImage: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'
+    }
   },
 
   methods: {
-    getInfo() {
+    getInfo () {
       const self = this
       this.$http.get(`pokemon/${this.name}`).then(res => {
-        const data = res.data;
-        self.pokeTypes = data.types;
-        self.pokeImage = data.sprites.front_default;
-        self.pokeId = data.id;
-        self.pokeName = data.name;
-      });
+        const data = res.data
+        self.pokeTypes = data.types
+        self.pokeImage = data.sprites.front_default
+        self.pokeId = data.id
+        self.pokeName = data.name
+      })
     },
 
-    goToPokemon(pokemonName) {
+    goToPokemon (pokemonName) {
       this.$router.push({
         name: 'pokemon',
         params: {
@@ -72,22 +74,12 @@ export default {
     }
   },
 
-  watch: {
-    name: function (val, oldVal) {
-      const self = this
-      if (val !== oldVal) {
-        self.name = val
-        self.getInfo()
-      }
-    }
-  },
-
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
-      this.getInfo();
-    });
+      this.getInfo()
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -203,7 +195,5 @@ export default {
       }
     }
   }
-  
-
 
 </style>

@@ -27,9 +27,9 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      statColor: "red"
+      statColor: 'red'
     }
   },
 
@@ -43,20 +43,20 @@ export default {
   },
 
   methods: {
-    returnProgressStatsColor(stat) {
+    returnProgressStatsColor (stat) {
       console.log(stat.stat.name)
-      if(stat.stat.name === "speed") {
-        return "pink" 
-      } else if (stat.stat.name === "special-defense") {
-        return "green"
-      } else if (stat.stat.name === "special-attack") {
-        return "blue"
-      } else if (stat.stat.name === "defense") {
-        return "yellow"
-      } else if (stat.stat.name === "attack") {
-        return "orange"
+      if (stat.stat.name === 'speed') {
+        return 'pink'
+      } else if (stat.stat.name === 'special-defense') {
+        return 'green'
+      } else if (stat.stat.name === 'special-attack') {
+        return 'blue'
+      } else if (stat.stat.name === 'defense') {
+        return 'yellow'
+      } else if (stat.stat.name === 'attack') {
+        return 'orange'
       } else {
-        return "red"
+        return 'red'
       }
     }
   }
