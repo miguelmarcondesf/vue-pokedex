@@ -4,7 +4,7 @@
       <RegionFilter/>
     </div>
 
-    <PokeList :pokeList="pokeList"/>
+    <PokeList class="poke-list" :pokeList="pokeList"/>
   </div>
 </template>
 

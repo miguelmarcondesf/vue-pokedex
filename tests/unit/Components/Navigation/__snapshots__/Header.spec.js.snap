@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render content correctly 1`] = `
+<v-toolbar-stub
+  color="red"
+  dark="true"
+  scrollthreshold="300"
+>
+  <v-toolbar-side-icon-stub />
+   
+  <v-toolbar-title-stub
+    class="toolbal-logo"
+  >
+    <router-link-stub
+      to="/"
+    >
+      Pokédex Vue
+    </router-link-stub>
+  </v-toolbar-title-stub>
+   
+  <v-spacer-stub />
+</v-toolbar-stub>
+`;
