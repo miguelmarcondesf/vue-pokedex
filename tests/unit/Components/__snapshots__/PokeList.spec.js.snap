@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokeList.vue should render content correctly 1`] = `
+<v-item-group-stub
+  activeclass="v-item--active"
+>
+  <input
+    placeholder="search"
+    type="text"
+  />
+   
+  <v-container-stub
+    grid-list-md=""
+    tag="div"
+  >
+    <v-layout-stub
+      tag="div"
+      wrap=""
+    >
+      <v-flex-stub
+        md4=""
+        sm6=""
+        tag="div"
+        xs12=""
+      >
+        <v-item-stub>
+          <pokecard-stub
+            name="bulbasaur"
+          />
+        </v-item-stub>
+      </v-flex-stub>
+      <v-flex-stub
+        md4=""
+        sm6=""
+        tag="div"
+        xs12=""
+      >
+        <v-item-stub>
+          <pokecard-stub
+            name="ivysaur"
+          />
+        </v-item-stub>
+      </v-flex-stub>
+      <v-flex-stub
+        md4=""
+        sm6=""
+        tag="div"
+        xs12=""
+      >
+        <v-item-stub>
+          <pokecard-stub
+            name="venusaur"
+          />
+        </v-item-stub>
+      </v-flex-stub>
+    </v-layout-stub>
+  </v-container-stub>
+</v-item-group-stub>
+`;
